@@ -1,62 +1,138 @@
-# Método Jacobi
+# Método Gauss-Jacobi
 
 ## Definição
 
-O **método de Jacobi**  é um métodos iterativos  para obter uma aproximação para a solução de um sistema linear. Geralmente em um método iterativo, iniciamos com uma aproximação para a solução (que pode ser ruim) e vamos melhorando essa aproximação através de sucessivas iterações.
+O **método de Jacobi** é um métodos iterativos para obter uma aproximação para a solução de um sistema linear. Geralmente em um método iterativo, iniciamos com uma aproximação para a solução (que pode ser ruim) e vamos melhorando essa aproximação através de sucessivas iterações.
 
 ## Descrição do método
 
- - Suponha um sistema linear nas incógnitas $x_{1}$, ..., $x_{n}$ da seguinte forma:
- 
-	  $a_{11}$$x_{1}$ + $a_{12}$$x_{2}$ + $a_{13}$$x_{3}$ + ... ++ $a_{1n}$$x_{n}$ =  $b_{1}$
-	  $a_{21}$$x_{1}$ + $a_{22}$$x_{2}$ + $a_{23}$$x_{3}$ + ... ++ $a_{2n}$$x_{n}$ =  $b_{2}$
-					.                      .                         .                                                                                 .
-					.                      .                         .                                                                                 .
-					.				       .                         .                                                                                 . 
-	    $a_{n1}$$x_{1}$ + $a_{n2}$$x_{2}$ + $a_{n3}$$x_{3}$ + ... ++ $a_{nn}$$x_{n}$ =  $b_{n}$
+- Suponha um sistema linear nas incógnitas $x_{1}$, ..., $x_{n}$ da seguinte forma:
+
+$a_{11}$$x_{1}$ + $a_{12}$$x_{2}$ + $a_{13}$$x_{3}$ + ... ++ $a_{1n}$$x_{n}$ = $b_{1}$
+
+$a_{21}$$x_{1}$ + $a_{22}$$x_{2}$ + $a_{23}$$x_{3}$ + ... ++ $a_{2n}$$x_{n}$ = $b_{2}$
+
+. . . .
+
+. . . .
+
+. . . .
+
+$a_{n1}$$x_{1}$ + $a_{n2}$$x_{2}$ + $a_{n3}$$x_{3}$ + ... ++ $a_{nn}$$x_{n}$ = $b_{n}$
 
 Suponha também que todos os termos $a_{ii}$ sejam diferentes de zero (i = 1, . . . , n). Se não for o caso, isso ás vezes pode ser resolvido com uma troca na ordem das equações. Então a solução desse sistema satisfaz
 
-  $x_1$ = 1/$a_{11}$ [$b_{1}$ − $a_{12x2}$ − $a_{13x3}$ − . . . − $a_1nxn$]
-  $x_2$ = 1/$a_{22}$ [$b_2$ − $a_{21x1}$ − $a_{23x3}$ − . . . − $a_{2nxn}$] 
-				.                      .                         .                                                                                 .
-					.                      .                         .                                                                                 .
-					.				       .                         .                                                                                 . 
-  $x_n$ = 1/$a_{nn}$ [$b_n$ − $a_{n1x1}$ − $a_{n2x2}$ − . . . − $a_{n,n−1xn−1}$]
+$x_1$ = 1/$a_{11}$ [$b_{1}$ − $a_{12x2}$ − $a_{13x3}$ − . . . − $a_1nxn$]
 
-Em outras palavras, se ( $x_1$, . . . ,  $x_n$) for a solução do sistema e esses valores forem colocados no lado direito das equações, então resultarão no lado esquerdo os mesmos valores $x_1$, . . . ,  $x_n$.
+$x_2$ = 1/$a_{22}$ [$b_2$ − $a_{21x1}$ − $a_{23x3}$ − . . . − $a_{2nxn}$]
+
+. . . .
+
+. . . .
+
+. . . .
+
+$x_n$ = 1/$a_{nn}$ [$b_n$ − $a_{n1x1}$ − $a_{n2x2}$ − . . . − $a_{n,n−1xn−1}$]
+
+Em outras palavras, se ( $x_1$, . . . , $x_n$) for a solução do sistema e esses valores forem colocados no lado direito das equações, então resultarão no lado esquerdo os mesmos valores $x_1$, . . . , $x_n$.
 
 O Método de Jacobi consiste em “chutar” valores $x_1^{(0)}$, . . . , $x_n^{(0)}$ , colocar esses valores no lado direito das equações, obter daí $x_1^{(1)}$ , . . . , $x_n^{(1)}$ , em seguida colocar esses novos valores nas equações e obter $x_1^{(2)}$ , . . . , $x_1^{(2)}$ , etc. Então
 
-$x_1^{k+1}$ = 1/$a_{11}$ ($b_1$ -  $a_{12}$$x_{2}^{(k)}$ + $a_{13}^{(k)}$$x_{3}$ - .. - $a_{1n}$$x_{n}^{(n)}$)
-$x_2^{k+1}$ = 1/$a_{22}$ ($b_2$ -  $a_{21}$$x_{1}^{(k)}$+ $a_{23}^{(k)}$$x_{3}$ - ... - $a_{2n}$$x_{n}^{(n)}$)
-    				.                      .                         .                                                                                 .
-					.                      .                         .                                                                                 .
-					.				       .                         .                                                                                 . 
-$x_3^{k+1}$ = 1/$a_{nn}$ ($b_1$ -  $a_{n1}$$x_{1}^{(k)}$ + $a_{n2}^{(k)}$$x_{2}$ - .. - $a_{n,n-1}x_{n-1}^{(n)}$)
+$x_1^{k+1}$ = 1/$a_{11}$ ($b_1$ - $a_{12}$$x_{2}^{(k)}$ + $a_{13}^{(k)}$$x_{3}$ - .. - $a_{1n}$$x_{n}^{(n)}$)
 
+$x_2^{k+1}$ = 1/$a_{22}$ ($b_2$ - $a_{21}$$x_{1}^{(k)}$+ $a_{23}^{(k)}$$x_{3}$ - ... - $a_{2n}$$x_{n}^{(n)}$)
+
+. . . .
+
+. . . .
+
+. . . .
+
+$x_3^{k+1}$ = 1/$a_{nn}$ ($b_1$ - $a_{n1}$$x_{1}^{(k)}$ + $a_{n2}^{(k)}$$x_{2}$ - .. - $a_{n,n-1}x_{n-1}^{(n)}$)
 
 Espera-se que para todo i = 1, . . . , n a sequência {$x_i^{k+1}$ }$_k$ convirja para o valor verdadeiro $x_i$.
 
- - Mas nem sempre ocorre essa convergência. Para saber se realmente vai convergir, usaremos o  **Critério das Linhas** que, se for satisfeito, implica na convergência do Método. Infelizmente, não poderemos concluir a afirmativa inversa. Isto é, é falso dizer “não satisfaz o Critério das Linhas então não converge”. Pode haver sistemas em que o Método de Jacobi funcione porém não satisfaça o Critério o das Linhas.
+- Mas nem sempre ocorre essa convergência. Para saber se realmente vai convergir, usaremos o **Critério das Linhas** que, se for satisfeito, implica na convergência do Método. Infelizmente, não poderemos concluir a afirmativa inversa. Isto é, é falso dizer “não satisfaz o Critério das Linhas então não converge”. Pode haver sistemas em que o Método de Jacobi funcione porém não satisfaça o Critério o das Linhas.
 
 ## Critério das linhas
 
 O Critério das Linhas pede que
 
- 
+para todo $i$ = 1, . . . , $n$. Em palavras: “o valor absoluto do termo diagonal na linha i é maior do que a soma dos valores absolutos de todos os outros termos na mesma linha”. É importante observar que o critério das linhas pode deixar de ser satisfeito se houver troca na ordem das equações, e vice-versa: uma troca cuidadosa pode fazer com que o sistema passe a satisfazer o critério.
 
-para todo $i$ = 1, . . . , $n$. Em palavras: “o valor absoluto do termo diagonal na linha i é maior do que a soma dos valores absolutos de todos os outros termos na mesma linha”. É importante observar que o critério das linhas pode deixar de ser satisfeito se houver troca na ordem das equações, e vice-versa: uma troca cuidadosa pode fazer com que o sistema passe a satisfazer o critério. 
+**Teorema.** Se o sistema linear satisfaz o Critério das Linhas então o Método de Jacobi converge.
 
- **Teorema.** Se o sistema linear satisfaz o Critério das Linhas então o Método de Jacobi converge.
-
-
-
-        
-##  Vantagens
+## Vantagens
 
 Tem a vantagem de ser mais simples de se implementar no computador do que o Método de Escalonamento, e está menos sujeito ao acumulo de erros de arredondamento.
 
-##  Desvantagens
+## Desvantagens
 
 Seu grande defeito, no entanto, é não funcionar em todos os casos.
+
+## Exemplo
+
+ 1.  a eliminação de Gauss-Jordan para resolver o sistema linear a seguir com 6 algarismos significativos.
+
+       $3x_1$ - $0.1x_2$ + $0.2x_{3}$ = 7.85
+       $0.1x_1$ + $7x_2$ - $0.3x_{3}$ = -19.3
+       $0.3x_1$ - $0.2x_2$ + $10x_{3}$ = 71.4
+
+**Solução:**
+
+-Vamos escrever o sistema na forma de matriz aumentada
+
+     3     -0.1   -0.2   |  7.85
+    −0.1    7     −0.3   | −19.3
+     0.3   −0.2   10     |  71.4
+
+-Normalizamos a 1a. linha com $L_1$ ← $L_1/3$
+
+	1     −0.03333   −0.066667  | 2.61667
+	0.1    7         −0.3       | −19.3      
+	0.3   −0.2       10         |  71.4
+
+-Eliminamos $x_1$ da 2a. e 3a. linhas com
+		
+$L_2$ ← $L_2$ − $0.1L_1$
+$L_3$ ← $L_3$ − $0.3L_1$
+		
+	 1   −0.03333   −0.066667 |   2.61667
+	 0    7.00333   −0.29333  | −19.5617
+	 0   −0.19000    10.0200  |  70.6150
+
+-Normalizamos a 2a. linha com $L_2$ ← $L_2/7.00333$
+
+	1   −0.03333   −0.066667 |  2.61667
+	0    1         −0.04188  | −2.79320  
+	0   −0.19000    10.0200  |  70.6150
+	
+-Eliminamos $x_2$da 1a. e 3a. linhas com
+
+   $L_1$ ← $L_1$ + $0.033333L_2$
+    $L_3$ ← $L_3$ + $0.19L_2$
+
+    1    0   −0.06806 |  2.52356
+    0    1   −0.04188 | −2.79320
+    0    0   10.01200 |  70.0843
+   
+-Normalizamos a 3a. linha com  $L_3$ ← $L_3/10.01200$
+
+    1    0   −0.06806 |  2.52356
+    0    1   −0.04188 | −2.79320
+    0    0    1       |  7.0
+
+-Eliminamos  $x_3$ da 1a. e 2a. linhas com
+
+   $L_1$ ← $L_1$ + $0.033333L_3$
+   $L_2$ ← $L_2$ + $0.04188L4_3$
+
+    1   0   0 |  3.0                        
+    0   1   0 | −2.5                    
+    0   0   1 |  7.0                              
+               
+ $=>$ $X =$    
+                          
+       3.0
+       7.0
+      −2.5
